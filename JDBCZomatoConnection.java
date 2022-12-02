@@ -53,8 +53,7 @@ public class JDBCZomatoConnection {
 		
 		System.out.println("enter the restaurantId to read details from the table");
 		int value2=obj.nextInt();
-		String sql=" select * from zomato where restaurantId=?";
-		PreparedStatement pstmt=connection.prepareStatement(sql,ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+		PreparedStatement pstmt=connection.prepareStatement(" select * from zomato where restaurantId=?");
 		pstmt.setInt(1, value2);
 
 		ResultSet rs=pstmt.executeQuery();
@@ -64,7 +63,7 @@ public class JDBCZomatoConnection {
 		}
 		else
 		{
-			//rs.previous();
+			
 			System.out.println(rs.getString(1)+rs.getInt(2)+rs.getString(3)+rs.getInt(4)+rs.getInt(5)+rs.getString(6));
 		}
 	}
